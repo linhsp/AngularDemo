@@ -39,6 +39,16 @@ angular.module('exampleApp')
             if (!this.checkExistDeal(deal.name)) {
                 list.push(deal);
             }            
+        },
+
+        updateDeal(deal) {
+            list.map(li => {
+                if (li.name === deal.name){
+                    Object.keys(li).map(item => {
+                        li[item] = deal[item];
+                    })                    
+                }
+            })           
         }        
 
         

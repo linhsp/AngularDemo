@@ -22,7 +22,7 @@
             uib-popover-template="'popover-group-btn.html'"                                       
             popover-placement="left"
             data-trigger="hover"            
-            popover-trigger="outsideClick"
+            popover-trigger="'outsideClick'"
           >
             <span class="glyphicon glyphicon-option-vertical"></span>
         </a>
@@ -42,7 +42,7 @@
 </table>
 </div>
 <script type="text/ng-template" id="popover-group-btn.html">
-    <div>
+    <div class="">
         <a ng-click="vm.editDeal(deal)" class="list-group-item">Edit </a>
         <a ng-click="vm.deleteDeal(deal.name)" class="list-group-item">Remove</a>
     </div>

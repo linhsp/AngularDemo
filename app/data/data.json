@@ -1,0 +1,27 @@
+{
+  "posts": [
+    { "id": 1, "title": "json-server", "author": "typicode" }
+  ],
+  "comments": [
+    { "id": 1, "body": "some comment", "postId": 1 }
+  ],
+  "profile": { "name": "typicode" },
+  "owners": {
+        "G800903": "G800903",
+        "tfgrmosa": "tfgrmosa",
+        "qft_group_admin": "qft_group_admin",
+        "tfgradmi": "tfgradmi"
+},
+  "deals": [
+       {
+            "name": "deal1",
+            "decs": "bla bla bla",
+            "traffic": "M2M",
+            "status": "idle",
+            "owner": "G800903",
+            "share": "10",
+            "reviewed": false
+        }
+  ]
+      
+}

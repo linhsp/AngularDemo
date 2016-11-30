@@ -16,3 +16,10 @@ a {
 .header {
     border-bottom: 0;
 }
+.mess-error {
+    color: #f00;
+    margin: 5px 0;
+}
+.is-error {
+    border-color: #b31d1d;
+}

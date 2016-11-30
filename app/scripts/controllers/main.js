@@ -8,16 +8,20 @@
  * Controller of the exampleApp
  */
 angular.module('exampleApp')
-  .controller('MainCtrl', function ($scope,  $uibModal, $log, MainService) {
-    let vm = this;
-    vm.list = MainService.getDealList();      
+  .controller('MainCtrl', function ($scope,  $uibModal, $log, MainService, API) {
+    let vm = this;    
+    let init = function() {
+      API.getListDeal(function(data){
+        if (data) {
+          vm.list = data;
+        }        
+      })
+    }
     vm.deleteDeal = function(dealName) {
       MainService.deleteDealByname(dealName);
     };
 
-    vm.editDeal = function(deal) {
-      
-      $("[data-toggle=popover]").popover('hide');
+    vm.editDeal = function(deal) {           
       vm.openDealModal(deal);
     };
 
@@ -41,8 +45,14 @@ angular.module('exampleApp')
       });
       modalInstance.result.then(function(deal) {
           $log.debug(deal);
-          MainService.addDeal(deal);
+          if (deal.isEdit) {
+             MainService.updateDeal(deal);
+          } else {
+            MainService.addDeal(deal);
+          }          
           vm.list = MainService.getDealList();
       });
     };
+
+    init();
   });
