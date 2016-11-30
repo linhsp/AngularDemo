@@ -1,0 +1,62 @@
+<!-- Large modal -->
+    <div class="modal-content">
+      <div class="modal-header">        
+        <h4 class="modal-title">Create Deal</h4>
+      </div>    
+      <div class="modal-body">
+        <!-- Form starting -->
+        <form class="form-horizontal">
+          <div class="form-group">
+            <label for="inputEmail3" class="col-sm-2 control-label">Deal Name</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" ng-model="deal.name" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="inputPassword3" class="col-sm-2 control-label">Deal Descriptions</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" ng-model="deal.desc">
+            </div>
+          </div>               
+          <div class="form-group">
+            <label for="inputPassword3" class="col-sm-2 control-label">Traffic Name</label>
+            <div class="col-sm-10">
+              <select type="text" class="form-control auto-width" ng-model="deal.traffic" ng-options="traffic for traffic in traffics"></select>
+            </div>
+          </div>        
+          <div class="form-group">
+            <label for="inputPassword3" class="col-sm-2 control-label">Status</label>
+            <div class="col-sm-10">
+              <select type="text" class="form-control auto-width" ng-model="deal.status" ng-options="status for status in statuses"></select>
+            </div>
+          </div> 
+          <div class="form-group">
+            <label for="inputPassword3" class="col-sm-2 control-label">Owner</label>
+            <div class="col-sm-10">
+              <select type="text" class="form-control auto-width" ng-model="deal.owner" ng-options="k as v for (k, v) in owners"></select>
+            </div>
+          </div> 
+          <div class="form-group">
+            <label for="inputPassword3" class="col-sm-2 control-label">Share</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control auto-width" ng-model="deal.share">
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox" ng-model="deal.reviewed"> Reviewed 
+                </label>
+              </div>
+            </div>
+          </div>
+        </form>
+        <!-- Form ending -->
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-default" ng-click="cancel()">Close</button>
+      <button type="button" class="btn btn-primary" ng-if="!deal.isEdit" ng-click="onSave(deal)">Create</button>
+      <button type="button" class="btn btn-primary" ng-if="deal.isEdit" ng-click="onSave(deal)">Save changes</button>
+    </div>    
+    </div>  

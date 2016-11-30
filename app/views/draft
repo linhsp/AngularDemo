@@ -1,0 +1,27 @@
+<div class="container">
+ <table class="table">
+  <thead>
+    <tr>
+      <th> # </th>
+      <th> Deal Name </th>
+      <th> Deal Descriptions </th>
+      <th> Reviewed </th>
+      <th> Rraffic Name </th>
+      <th> Status </th>
+      <th> Owner </th>
+      <th> Share </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td>@mdo</td>
+       <td>Mark</td>
+      <td>Otto</td>
+      <td>@mdo</td>
+    </tr>    
+  </tbody>
+</table>
+</div>

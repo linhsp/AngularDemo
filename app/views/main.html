@@ -1,0 +1,49 @@
+<div class="form-group" popoverClose> 
+  <button type="button" class="btn btn-primary" ng-click="vm.openDealModal()">Create New</button>
+</div>
+<div class="table-responsive">
+ <table class="table table-bordered text-center">
+  <thead>
+    <tr>
+      <th class="text-center"> # </th>
+      <th> Deal Name </th>
+      <th> Deal Descriptions </th>
+      <th> Reviewed </th>
+      <th> Traffic Name </th>
+      <th> Status </th>
+      <th> Owner </th>
+      <th> Share </th>      
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="deal in vm.list">
+      <td scope="row">
+        <a 
+            uib-popover-template="'popover-group-btn.html'"                                       
+            popover-placement="left"
+            data-trigger="hover"            
+            popover-trigger="outsideClick"
+          >
+            <span class="glyphicon glyphicon-option-vertical"></span>
+        </a>
+
+      </td>
+      <td> {{deal.name}} </td>
+      <td> {{deal.decs}} </td>
+      <td>
+        <input type="checkbox" ng-model="deal.reviewed">
+      </td>
+      <td> {{deal.traffic}} </td>
+      <td> {{deal.status}} </td>
+      <td> {{deal.owner}} </td>
+      <td> {{deal.share}} </td>
+    </tr>    
+  </tbody>
+</table>
+</div>
+<script type="text/ng-template" id="popover-group-btn.html">
+    <div>
+        <a ng-click="vm.editDeal(deal)" class="list-group-item">Edit </a>
+        <a ng-click="vm.deleteDeal(deal.name)" class="list-group-item">Remove</a>
+    </div>
+</script>
