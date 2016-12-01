@@ -5,15 +5,20 @@
  <table class="table table-bordered text-center">
   <thead>
     <tr>
-      <th class="text-center"> # </th>
-      <th> Deal Name </th>
-      <th> Deal Descriptions </th>
-      <th> Reviewed </th>
-      <th> Traffic Name </th>
-      <th> Status </th>
-      <th> Owner </th>
-      <th> Share </th>      
+      <th rowspan="2" class="text-center"> # </th>
+      <th rowspan="2"> Deal Name </th>
+      <th rowspan="2"> Deal Descriptions </th>
+      <th rowspan="2"> Reviewed </th>
+      <th rowspan="2"> Traffic Name </th>
+      <th rowspan="2"> Status </th>
+      <th rowspan="2"> Owner </th>
+      <th colspan="3"> Share </th>
     </tr>
+    <tr>
+      <th> All Traffic </th>
+      <th> M2M </th>
+      <th> Non-M2M </th>      
+    </tr
   </thead>
   <tbody>
     <tr ng-repeat="deal in vm.list">
@@ -36,7 +41,9 @@
       <td> {{deal.traffic}} </td>
       <td> {{deal.status}} </td>
       <td> {{deal.owner}} </td>
-      <td> {{deal.share}} </td>
+      <td> {{deal.share. allTraffic}} </td>
+      <td> {{deal.share.m2M}} </td>
+      <td> {{deal.share.nonM2M}} </td>
     </tr>    
   </tbody>
 </table>

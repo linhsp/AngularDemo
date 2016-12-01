@@ -17,7 +17,11 @@ angular.module('exampleApp')
       decs: '',
       owner: '',
       reviewed: false,
-      share: null,
+      share: {
+        allTraffic: null,
+        nonM2M: null,
+        m2M: null
+      },
       status: '',
       traffic: ''
     };
@@ -41,19 +45,35 @@ angular.module('exampleApp')
         $scope.error.dealName = "This name is already existed."
       }
     }
-    $scope.validateShare = function(share) {     
-        $scope.error.dealShare = (share < 0 || share > 100) ? 'Share must be in range from 0 to 100' : '';
-      
+    $scope.validateShare = function(shareKey, value) {
+      if (!$scope.error.dealShare) {
+        $scope.error.dealShare = {};
+      }      
+      $scope.error.dealShare[shareKey] = (value < 0 || value > 100) ? 'Share must be in range from 0 to 100.' : '';
+      let total = 0;
+      Object.keys($scope.deal.share).forEach(share => {
+        total += $scope.deal.share[share];
+      })
+      $scope.error.dealShare.total = (total != 100) ? "Total of shares (All Traffic, M2M, Non-M2M) must be 100." : '';      
     }
-    $scope.onSave = function (data) {
-      console.log($scope.error);
-      let hasErrors = false;
+    let checkErrors = function() {
+      let hasErrors = false;     
       Object.keys($scope.error).forEach((err) => {
-        if ($scope.error[err]) {
+        if (typeof($scope.error[err]) ==='string' && $scope.error[err]){          
                hasErrors = true;          
         }
+        if (typeof($scope.error[err]) ==='object') {
+          Object.keys($scope.error[err]).forEach((k) => {
+            if ($scope.error[err][k]) {
+              hasErrors = true;
+            }
+          })
+        }
       })
-      if (hasErrors) {
+      return hasErrors;    
+    }
+    $scope.onSave = function (data) {    
+      if (checkErrors()) {
         return;
       }
       $uibModalInstance.close(data);

@@ -19,7 +19,11 @@
             "traffic": "M2M",
             "status": "idle",
             "owner": "G800903",
-            "share": "10",
+            "share": {
+                "allTraffic": 5,
+                "nonM2M": 10,
+                "m2M": 1
+                    },
             "reviewed": false
         }
   ]

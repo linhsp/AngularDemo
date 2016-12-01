@@ -23,3 +23,7 @@ a {
 .is-error {
     border-color: #b31d1d;
 }
+.table.text-center > thead th{
+    vertical-align: middle;
+    text-align: center;
+}
