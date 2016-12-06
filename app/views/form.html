@@ -10,12 +10,13 @@
             <label for="inputEmail3" class="col-sm-2 control-label">Deal Name *</label>
             <div class="col-sm-10">
               <input type="text" class="form-control" ng-model="deal.name" 
-                      required ng-change="validateName(deal.name)" ng-class="error.dealName ? 'is-error' : ''"
-                      ng-disabled="deal.isEdit" name="name" required ng-nameunique>
-              <p class="mess-error" ng-show="error.dealName"> {{error.dealName}} </p>
-              <div ng-messages="dealForm.name.$error">
+                      ng-change="" ng-class="error.dealName ? 'is-error' : ''"
+                      ng-disabled="deal.isEdit" name="name" 
+                      required name-unique begin-with-char>              
+              <div ng-messages="dealForm.name.$error" class="mess-error">
                 <div ng-message="required">This field is required</div>              
-                <div ng-message="name-unique">This field is already existed. </div>     
+                <div ng-message="nameUnique">This field is already existed. </div>
+                <div ng-message="beginWithChar">Deal name must begin with a character</div>  
               </div>
             </div>
           </div>

@@ -34,17 +34,6 @@ angular.module('exampleApp')
     }    
     $scope.deal = (deal && deal.isEdit) ? angular.copy(deal) : $scope.deal;
     $scope.error = {};
-    $scope.validateName = function(name) {
-      let pattern = new RegExp('^[a-zA-Z]');      
-      pattern.test(name);
-      $scope.error.dealName = !name ? 'This field is required.' : '';
-      if (name && !pattern.test(name)) {
-        $scope.error.dealName = 'Deal name must begin with a character.';
-      }
-      if (MainService.checkExistDeal(name)) {
-        $scope.error.dealName = "This name is already existed."
-      }
-    }
     $scope.validateShare = function(shareKey, value) {
       if (!$scope.error.dealShare) {
         $scope.error.dealShare = {};
