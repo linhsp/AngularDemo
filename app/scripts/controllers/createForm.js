@@ -33,38 +33,8 @@ angular.module('exampleApp')
       })
     }    
     $scope.deal = (deal && deal.isEdit) ? angular.copy(deal) : $scope.deal;
-    $scope.error = {};
-    $scope.validateShare = function(shareKey, value) {
-      if (!$scope.error.dealShare) {
-        $scope.error.dealShare = {};
-      }      
-      $scope.error.dealShare[shareKey] = (value < 0 || value > 100) ? 'Share must be in range from 0 to 100.' : '';
-      let total = 0;
-      Object.keys($scope.deal.share).forEach(share => {
-        total += $scope.deal.share[share];
-      })
-      $scope.error.dealShare.total = (total != 100) ? "Total of shares (All Traffic, M2M, Non-M2M) must be 100." : '';      
-    }
-    let checkErrors = function() {
-      let hasErrors = false;     
-      Object.keys($scope.error).forEach((err) => {
-        if (typeof($scope.error[err]) ==='string' && $scope.error[err]){          
-               hasErrors = true;          
-        }
-        if (typeof($scope.error[err]) ==='object') {
-          Object.keys($scope.error[err]).forEach((k) => {
-            if ($scope.error[err][k]) {
-              hasErrors = true;
-            }
-          })
-        }
-      })
-      return hasErrors;    
-    }
+        
     $scope.onSave = function (data) {    
-      if (checkErrors()) {
-        return;
-      }
       $uibModalInstance.close(data);
     }    
     $scope.cancel = function() {

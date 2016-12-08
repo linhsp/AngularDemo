@@ -1,12 +1,15 @@
 angular.module('exampleApp')
 .directive('nameUnique', ['MainService', function(MainService){
     return {
-        restrict: 'A',   
+        restrict: 'A',
+        scope:{
+            isEdit: '=ngDisabled'
+        },
         require: 'ngModel',    
         link: function(scope, element, attrs, ngModel) {            
             ngModel.$validators.nameUnique = function(modelValue) {
                 //true or false based on custome dir validation                                  
-                return MainService.checkExistDeal(modelValue) ? false : true;  
+                return (scope.isEdit || !MainService.checkExistDeal(modelValue)) ? true : false;  
             };
 
         }

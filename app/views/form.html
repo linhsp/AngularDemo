@@ -13,7 +13,7 @@
                       ng-change="" ng-class="error.dealName ? 'is-error' : ''"
                       ng-disabled="deal.isEdit" name="name" 
                       required name-unique begin-with-char>              
-              <div ng-messages="dealForm.name.$error" class="mess-error">
+              <div ng-hide="deal.isEdit" ng-messages="dealForm.name.$error" class="mess-error">
                 <div ng-message="required">This field is required</div>              
                 <div ng-message="nameUnique">This field is already existed. </div>
                 <div ng-message="beginWithChar">Deal name must begin with a character</div>  
@@ -43,10 +43,11 @@
             <div class="col-sm-10">
               <select type="text" class="form-control auto-width" ng-model="deal.owner" ng-options="k as v for (k, v) in owners"></select>
             </div>
-          </div> 
-
-          <deal-share share="deal.share"></deal-share>
-
+          </div>
+          <deal-share name="share" ng-model="deal.share" total=100 form-name="dealForm"></deal-share>
+          <div ng-messages="dealForm.share.$error" class="mess-error form-group">
+            <div ng-message="total" class="col-sm-offset-2 col-sm-10" >Total of shares (All Traffic, M2M, Non-M2M) must be 100.</div>                
+          </div>
           <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
               <div class="checkbox">
@@ -61,7 +62,7 @@
     </div>
     <div class="modal-footer">
       <button type="button" class="btn btn-default" ng-click="cancel()">Close</button>
-      <button type="button" class="btn btn-primary" ng-if="!deal.isEdit" ng-click="onSave(deal)"ng-disabled="dealForm.$invalid">Create</button>
-      <button type="button" class="btn btn-primary" ng-if="deal.isEdit" ng-click="onSave(deal)" ng-disabled="dealForm.$invalid">Save changes</button>
+      <button type="button" class="btn btn-primary" ng-if="!deal.isEdit" ng-click="onSave(deal)"ng-disabled="dealForm.$invalid">Create</button>      
+      <button type="button" class="btn btn-primary" ng-if="deal.isEdit" ng-click="onSave(deal)"ng-disabled="dealForm.$invalid">Save changes</button>
     </div>    
     </div>  
